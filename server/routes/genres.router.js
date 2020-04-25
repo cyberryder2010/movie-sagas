@@ -1,5 +1,19 @@
 const express = require("express");
-const router = express.Router();
+const genresRouter = express.Router();
 const pool = require("../modules/pool");
 
-module.exports = router;
+genresRouter.get("/", (req, res) => {
+  const queryString = `SELECT * FROM "genres" ORDER BY "id" ASC`;
+
+  pool
+    .query(queryString)
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((err) => {
+      console.log("Error retrieving data from database:", err);
+      res.send(500);
+    });
+});
+
+module.exports = genresRouter;

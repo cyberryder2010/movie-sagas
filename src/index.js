@@ -74,9 +74,9 @@ function* getDetails(action) {
   try {
     const response = yield axios.get(`/movies/details/${action.payload}`);
     console.log(response);
-    // yield put({ type: "SET_GENRES", payload: response.data });
+    yield put({ type: "SET_DETAILS", payload: response.data });
   } catch (err) {
-    console.warn("did not get genres");
+    console.warn("did not get details");
   }
 }
 // Create one store that all components can use

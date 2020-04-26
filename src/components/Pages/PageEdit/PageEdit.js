@@ -17,13 +17,14 @@ class PageEdit extends Component {
       }
     );
   };
+  //TODO input for change to title or description should update to database. Need PUT
 
   onSaveClick = (event) => {
     this.props.dispatch({ type: "GET_DETAILS", payload: this.state.title });
   };
 
   onCancelClick = (event) => {
-    this.props.history.push("/");
+    this.props.history.push("/details");
   };
 
   render() {
@@ -36,11 +37,10 @@ class PageEdit extends Component {
             onChange={this.onInputChange("title")}
             placeholder="Change Title"
           />
-          <input
+          <textarea
             type="text"
             onChange={this.onInputChange("description")}
-            placeholder="Edit Description"
-          />
+          ></textarea>
         </div>
         <button onClick={this.onCancelClick}>Cancel</button>
         <button onClick={this.onSaveClick}>Save</button>

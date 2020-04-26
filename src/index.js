@@ -18,6 +18,7 @@ function* rootSaga() {
   yield takeEvery("GET_MOVIES", getMovies);
   yield takeEvery("GET_GENRES", getGenres);
   yield takeEvery("GET_DETAILS", getDetails);
+  yield takeEvery("UPDATE_DETAILS", updateDetails);
 }
 
 // Create sagaMiddleware
@@ -77,6 +78,16 @@ function* getDetails(action) {
     yield put({ type: "SET_DETAILS", payload: response.data });
   } catch (err) {
     console.warn("did not get details");
+  }
+}
+
+function* updateDetails(action) {
+  try {
+    yield axios.put(`/movies/${action.payload.id}`, action.payload);
+    yield put({ type: "GET_DETAILS", payload: action.payload.id });
+    yield put({ type: "GET_MOVIES" });
+  } catch (err) {
+    console.warn("did not edit");
   }
 }
 // Create one store that all components can use

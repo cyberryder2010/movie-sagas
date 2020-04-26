@@ -20,11 +20,15 @@ class PageEdit extends Component {
   //TODO input for change to title or description should update to database. Need PUT
 
   onSaveClick = (event) => {
-    this.props.dispatch({ type: "GET_DETAILS", payload: this.state.title });
+    this.props.dispatch({
+      type: "UPDATE_DETAILS",
+      payload: { ...this.state, id: this.props.store.details[0].id },
+    });
+    this.props.history.push(`/details/${this.props.store.details[0].id}`);
   };
 
   onCancelClick = (event) => {
-    this.props.history.push("/details");
+    this.props.history.push(`/details/${this.props.store.details[0].id}`);
   };
 
   render() {
@@ -49,4 +53,6 @@ class PageEdit extends Component {
   }
 }
 
-export default connect()(PageEdit);
+const mapStoreToProps = (store) => ({ store });
+
+export default connect(mapStoreToProps)(PageEdit);

@@ -49,4 +49,20 @@ moviesRouter.post("/", (req, res) => {
     });
 });
 
+moviesRouter.put("/:id", (req, res) => {
+  const itemId = req.params.id;
+  const newItemData = req.body;
+  const queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE id = $3;`;
+
+  pool
+    .query(queryText, [newItemData.title, newItemData.description, itemId])
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = moviesRouter;

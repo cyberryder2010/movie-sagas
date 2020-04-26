@@ -2,6 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class PageDetails extends Component {
+  state = {
+    title: "",
+    description: "",
+  };
+
+  onInputChange = (input) => (event) => {
+    this.setState(
+      {
+        [input]: event.target.value,
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  };
+
   onEditClick = (event) => {
     this.props.history.push("/edit");
   };

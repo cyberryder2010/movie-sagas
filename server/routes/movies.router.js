@@ -16,4 +16,37 @@ moviesRouter.get("/", (req, res) => {
     });
 });
 
+moviesRouter.get("/details/:id", (req, res) => {
+  const queryString = `SELECT * FROM "movies" WHERE "id" = $1`;
+
+  pool
+    .query(queryString, [req.params.id])
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((err) => {
+      console.log("Error retrieving data from database:", err);
+      res.send(500);
+    });
+});
+
+moviesRouter.post("/", (req, res) => {
+  console.log(req.body);
+
+  const queryString = `INSERT INTO "movies" 
+  ( description )
+  VALUES ( $1 )`;
+
+  pool
+    .query(queryString, [req.body.description])
+
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = moviesRouter;

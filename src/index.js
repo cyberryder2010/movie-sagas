@@ -42,6 +42,15 @@ const genres = (state = [], action) => {
       return state;
   }
 };
+// used to capture index of movie for details page
+const details = (state = [], action) => {
+  switch (action.type) {
+    case "SET_DETAILS":
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
 function* getMovies() {
   try {
@@ -75,6 +84,7 @@ const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
+    details,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)

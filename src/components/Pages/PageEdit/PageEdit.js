@@ -34,7 +34,7 @@ class PageEdit extends Component {
   render() {
     return (
       <div>
-        <h1>EDIT</h1>
+        <h2>EDIT</h2>
         <div>
           <input
             type="text"

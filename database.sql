@@ -66,3 +66,30 @@ VALUES
   ('Science Fiction'),
   ('Space-Opera'),
   ('Superhero');
+
+-- data for movies_genres junction table
+INSERT INTO "movies_genres"
+  ("movies_id", "genres_id")
+VALUES
+  (1, 3),
+  (1, 2),
+  (1, 7),
+  (2, 1),
+  (2, 9),
+  (3, 7),
+  (3, 8),
+  (4, 2),
+  (5, 6),
+  (6, 8),
+  (6, 11),
+  (7, 1),
+  (8, 6),
+  (9, 2)
+(10,1),
+(10,7),
+(10,11),
+(11,11),
+(12,10),
+(12,10),
+(12,5),
+(13,2),

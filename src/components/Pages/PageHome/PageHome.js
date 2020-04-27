@@ -32,7 +32,7 @@ class PageHome extends Component {
 
     return (
       <div>
-        <h1>HOME</h1>
+        <h2>HOME</h2>
         {moviesList}
       </div>
     );

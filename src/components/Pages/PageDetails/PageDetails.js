@@ -35,7 +35,7 @@ class PageDetails extends Component {
 
     return (
       <div>
-        <h1>DETAILS</h1>
+        <h2>DETAILS</h2>
         <h3>{movieTitle}</h3>
         <p>{movieDescription}</p>
         <ul>{genresList}</ul>

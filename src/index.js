@@ -62,9 +62,9 @@ function* getMovies() {
   }
 }
 
-function* getGenres() {
+function* getGenres(action) {
   try {
-    const response = yield axios.get("/genres");
+    const response = yield axios.get(`/genres/movie/${action.payload}`);
     yield put({ type: "SET_GENRES", payload: response.data });
   } catch (err) {
     console.warn("did not get genres");
